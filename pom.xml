@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <organization>
+    <name>example</name>
+  </organization>
+  <version>1.00.000</version>
+  <artifactId>example-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>Example Parent</name>
+
+  <prerequisites>
+    <maven>${example.maven.version}</maven>
+  </prerequisites>
+
+  <inceptionYear>2013</inceptionYear>
+
+  <modules>
+    <module>Test</module>
+  </modules>
+
+
+  <developers>
+    <developer>
+      <id/>
+      <name>example user</name>
+      <email>example@example.com</email>
+      <timezone>-4</timezone>
+      <roles>
+        <role>code monkey</role>
+      </roles>
+    </developer>
+  </developers>
+  <repositories>
+  </repositories>
+  <pluginRepositories>
+  </pluginRepositories>
+
+  <dependencyManagement>
+    <dependencies>
+      
+                  
+      <dependency>      
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${example.junit.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.liferay.maven.plugins</groupId>
+          <artifactId>liferay-maven-plugin</artifactId>
+          <version>${liferay.maven.plugin.version}</version>
+          <configuration>
+            <autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
+            <appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
+            <appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
+            <appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
+            <liferayVersion>${liferay.version}</liferayVersion>
+            <pluginName>about-portlet-portlet</pluginName>
+            <pluginType>portlet</pluginType>
+          </configuration>
+        </plugin>        
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.6</version>
+          <configuration>
+            <encoding>${example.encoding}</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+            <encoding>${example.encoding}</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.15</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+
+
+
+  <!-- Fortify Maven plugin. Note: this will consume 2GB of memory! Also,
+  sca-translate takes 10 minutes & sca-scan takes 30 minutes. 
+  mvn clean
+   mvn -P sca-aggregate,sca-translate clean install -Dmaven.test.skip 
+  mvn -P sca-aggregate,sca-scan -Dmaven.test.skip com.fortify.ps.maven.plugin:maven-sca-plugin:2.6.002:scan -->
+  <profiles>
+  </profiles>
+  <properties>
+    <example.jconnect.version>7.0.7</example.jconnect.version>
+    <example.junit.version>4.11</example.junit.version>
+    <example.slf4j.version>1.7.5</example.slf4j.version>
+    <example.log4j.version>1.2.17</example.log4j.version>
+    <example.java.version>1.6</example.java.version>
+    <example.sourceEncoding>UTF-8</example.sourceEncoding>
+    <example.maven.version>3.1.1</example.maven.version>
+    <example.project.version>3.00.000</example.project.version>
+    <project.version>3.00.000</project.version>
+    <example.encoding>UTF-8</example.encoding>
+    
+        
+    <liferay.theme.parent>_styled</liferay.theme.parent>
+    <liferay.theme.type>vm</liferay.theme.type>
+    <liferay.maven.plugin.version>6.2.10.6</liferay.maven.plugin.version>
+    <liferay.version>6.2.10.7</liferay.version>
+    <liferay.auto.deploy.dir>${env.LIFERAY_DEPLOY}</liferay.auto.deploy.dir>
+  </properties>
+
+</project>
